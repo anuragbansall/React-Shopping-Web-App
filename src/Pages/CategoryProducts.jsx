@@ -22,9 +22,6 @@ function CategoryProducts() {
 
     }, [category])
 
-    console.log(categoryData);
-    
-
   return (
       <ProductsContainer 
         data={categoryData}
