@@ -44,13 +44,13 @@ function NavBar() {
           Add Product +
         </Link>
         <div className="border-t-2 mt-6 py-4">
-          <h2 className="text-2xl font-semibold mb-4">Categories</h2>
+          <h2 className="text-3xl md:text-2xl font-semibold mb-4">Categories</h2>
           <ul className="">
             <li className="flex items-center gap-x-2 my-2 font-medium text-lg">
               <NavLink
                 to="/"
                 className={(e) => {
-                  return e.isActive ? "text-blue-500 capitalize" : "text-black capitalize";
+                  return e.isActive ? "text-blue-500 capitalize text-2xl md:text-xl" : "text-black capitalize text-2xl md:text-xl";
                 }}
                 onClick={toggleNavBar}
               >
@@ -60,12 +60,12 @@ function NavBar() {
             {categories.map((el, idx) => (
               <li
                 key={idx}
-                className="flex items-center gap-x-2 my-2 font-medium text-lg"
+                className="flex items-center gap-x-2 my-4 md:my-2 font-medium text-lg"
               >
                 <NavLink
                   to={`/categories/${el}`}
                   className={(e) => {
-                    return e.isActive ? "text-blue-500 capitalize" : "text-black capitalize";
+                    return e.isActive ? "text-blue-500 capitalize text-2xl md:text-xl" : "text-black capitalize text-2xl md:text-xl";
                   }}
                   onClick={toggleNavBar}
                 >

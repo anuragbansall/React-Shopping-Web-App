@@ -8,7 +8,7 @@ function ProductCard({id, title, category, description, image, price, rating}) {
   const navigate = useNavigate()
 
   return (
-    <div title={title} onClick={() => navigate(`/product-details/${id}`)} className='min-h-[20rem] w-[15rem] bg-white border overflow-hidden rounded-md p-2 cursor-pointer'>
+    <div title={title} onClick={() => navigate(`/product-details/${id}`)} className='min-h-[20rem] md:w-[15rem] w-[90%] bg-white border overflow-hidden rounded-md p-2 cursor-pointer'>
         <div className='w-full h-[12rem] flex items-center justify-center'>
             <img src={image} className="max-h-full max-w-full object-cover hover:scale-105 duration-200" />
         </div>
