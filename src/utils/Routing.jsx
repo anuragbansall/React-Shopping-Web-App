@@ -4,8 +4,8 @@ import Home from '../Components/Home'
 import ProductDetails from '../Components/ProductDetails'
 import HomeProducts from '../Pages/HomeProducts'
 import CategoryProducts from '../Pages/CategoryProducts'
-import CreateProduct from '../Components/CreateProduct'
-import EditProduct from '../Components/EditProduct'
+import CreateProduct from '../Pages/CreateProduct'
+import EditProduct from '../Pages/EditProduct'
 
 function Routing() {
   return (
