@@ -64,12 +64,15 @@ function CreateProduct() {
     }
 
     return (
-        <ProductForm 
-            submitFormDataHandler={submitFormDataHandler}
-            newProductData={newProductData}
-            handleInputData={handleInputData}
-            title={"Add Product"}
-        />
+        <div className='min-h-screen w-full flex flex-col items-center p-8'>
+            <ProductForm 
+                submitFormDataHandler={submitFormDataHandler}
+                newProductData={newProductData}
+                handleInputData={handleInputData}
+                title={"Add New Product"}
+            />
+        </div>
+
     )
 }
 

@@ -2,9 +2,8 @@ import React from 'react'
 
 function ProductForm({submitFormDataHandler, newProductData, handleInputData, title}) {
   return (
-    <div className='min-h-screen w-full flex flex-col items-center p-8'>
             <div className='bg-slate-00 w-[50rem] max-w-full h-fit'>
-                <h2 className='text-3xl font-semibold my-4'>Add New Product</h2>
+                <h2 className='text-3xl font-semibold my-4'>{title}</h2>
                 <form className='flex flex-col gap-4' onSubmit={submitFormDataHandler}>
                     <input required type="url" name="image" className='w-full p-2 rounded-md bg-zinc-100' placeholder='image link' value={newProductData.image} onChange={handleInputData} />
                     <input required type="text" name="title" className='w-full p-2 rounded-md bg-zinc-100' placeholder='title' value={newProductData.title} onChange={handleInputData} />
@@ -21,7 +20,6 @@ function ProductForm({submitFormDataHandler, newProductData, handleInputData, ti
                     <button className='self-start border md:border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center'>{title}</button>
                 </form>
             </div>
-        </div>
   )
 }
 
