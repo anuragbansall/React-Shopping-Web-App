@@ -4,24 +4,16 @@ import { axiosInstance } from "../utils/Axios";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { ProductDetailsContext } from "../Context/Context";
 
+// arr.filter((el, idx, self) => self.indexOf(el) === idx)
+
 function NavBar() {
 
-  const [categories, setCategories] = useState([]);
+  const [productsData, setProductsData] = useContext(ProductDetailsContext)
+
+  const filteredCategories = productsData.map(el => el.category).filter((el, idx, self) => self.indexOf(el) === idx)  
+
+  const categories = filteredCategories
   const [navBarIsOpen, setNavBarIsOpen] = useState(false);
-
-  const fetchCategories = () => {
-    try {
-      axiosInstance
-        .get("/products/categories")
-        .then((data) => setCategories(data.data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchCategories();
-  }, [categories]);
 
   const toggleNavBar = () => {
     setNavBarIsOpen(!navBarIsOpen);
