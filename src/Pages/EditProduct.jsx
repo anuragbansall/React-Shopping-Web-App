@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductDetailsContext } from '../Context/Context';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductForm from '../Components/ProductForm';
+import useToastMessage from '../utils/ToastMessage';
 
 function EditProduct() {
 
@@ -57,6 +58,7 @@ function EditProduct() {
             ))
         ))
         navigate(-1)
+        useToastMessage("Product Edited!")
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductDetailsContext } from '../Context/Context'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useToastMessage from '../utils/ToastMessage';
 
 function ProductDetails() {
 
@@ -18,6 +19,7 @@ function ProductDetails() {
         prevData.filter(item => (item.id).toString() !== (id).toString())
       ))
       navigate(-1)
+      useToastMessage("Product Deleted!")
     }
 
   return (

@@ -3,8 +3,10 @@ import { ProductDetailsContext } from '../Context/Context'
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid'
 import ProductForm from '../Components/ProductForm';
+import useToastMessage from '../utils/ToastMessage';
 
 function CreateProduct() {
+
     const [productsData, setProductsData] = useContext(ProductDetailsContext)
 
     const [newProductData, setNewProductData] = useState({
@@ -59,8 +61,8 @@ function CreateProduct() {
                 count: ""
             }
         })
-
         navigate(-1)
+        useToastMessage("Product Added!")
     }
 
     return (

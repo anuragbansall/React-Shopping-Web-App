@@ -29,7 +29,7 @@ function NavBar() {
       <div
         className={`${
           navBarIsOpen ? "translate-x-0" : "-translate-x-full"
-        } bg-white h-screen border px-8 md:py-8 py-20 w-screen md:w-[15rem] md:translate-x-0 md:relative fixed top-0 left-0 transition-transform duration-300`}
+        } bg-white h-screen overflow-auto border px-8 md:py-8 py-20 w-screen md:w-[15rem] md:translate-x-0 md:relative fixed top-0 left-0 transition-transform duration-300`}
       >
         <Link
           to={"/create-product"}
