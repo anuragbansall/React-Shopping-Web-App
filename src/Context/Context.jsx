@@ -1,31 +1,24 @@
-import React, { createContext, useEffect, useState } from 'react'
-import { axiosInstance } from '../utils/Axios'
+import React, { createContext, useEffect, useState } from 'react';
+import InitialProductData from './InitialProductData';
 
-export const ProductDetailsContext = createContext()
+export const ProductDetailsContext = createContext();
 
-function Context({children}) {
+function Context({ children }) {
+  const initialProductData = InitialProductData;
 
-const [productsData, setProductsData] = useState([])
+  const storedProductData = JSON.parse(localStorage.getItem('productData')) || initialProductData;
 
-  const getProductData = () => {
-    try{
-        axiosInstance.get("/products")
-       .then(data => setProductsData(data.data)
-    )
-    }catch(err){
-        console.error(err)
-    }
-  }
+  const [productData, setProductData] = useState(storedProductData);
+
   useEffect(() => {
-    getProductData()
-    
-  }, [])
-  
+    localStorage.setItem('productData', JSON.stringify(productData));
+  }, [productData]);
+
   return (
-    <ProductDetailsContext.Provider value={[productsData, setProductsData]}>
+    <ProductDetailsContext.Provider value={[productData, setProductData]}>
       {children}
     </ProductDetailsContext.Provider>
-  )
+  );
 }
 
-export default Context
+export default Context;

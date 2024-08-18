@@ -18,8 +18,8 @@ function ProductCard({id, title, category, description, image, price, rating}) {
               {description}
             </p>
             <StarRating 
-              ratingCount={rating.rate}
-              totalVotes={rating.count}
+              ratingCount={rating?.rate}
+              totalVotes={rating?.count}
             />
         </div>
     </div>

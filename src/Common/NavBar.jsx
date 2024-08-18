@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { axiosInstance } from "../utils/Axios";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { ProductDetailsContext } from "../Context/Context";
 
 function NavBar() {
+
   const [categories, setCategories] = useState([]);
   const [navBarIsOpen, setNavBarIsOpen] = useState(false);
 
@@ -38,7 +40,7 @@ function NavBar() {
         } bg-white h-screen border px-8 md:py-8 py-20 w-screen md:w-[15rem] md:translate-x-0 md:relative fixed top-0 left-0 transition-transform duration-300`}
       >
         <Link
-          to={""}
+          to={"/create-product"}
           className="border-2 border-slate-400 text-slate-400 w-full text-center inline-block hover:bg-slate-400 hover:text-white duration-200 px-4 py-2 text-lg font-semibold rounded"
         >
           Add Product +

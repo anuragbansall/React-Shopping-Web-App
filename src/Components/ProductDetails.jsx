@@ -2,57 +2,49 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductDetailsContext } from '../Context/Context'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { axiosInstance } from '../utils/Axios';
-import LoadingAnimation from '../Common/LoadingAnimation';
 
 function ProductDetails() {
 
     const {id} = useParams()
 
-    const [productDetails, setProductDetails] = useState({})
+    const [productsData, setProductsData] = useContext(ProductDetailsContext)
 
-    const fetchProductDetails = () => {
-        try{
-            axiosInstance.get(`products/${id}`)
-            .then(data => setProductDetails(data.data))
-        }
-        catch(err){
-            console.log(err);
-        }
-    }
+    const productDetails = productsData.filter(el => (el.id).toString() === id.toString())
     
-    useEffect(() => {
-        fetchProductDetails()
-    }, [productDetails, id])
-
     const navigate = useNavigate()
+
+    const handleDeleteProductData = (id) => {
+      setProductsData(prevData => (
+        prevData.filter(item => (item.id).toString() !== (id).toString())
+      ))
+      navigate(-1)
+    }
 
   return (
     <div className='min-h-full w-full flex justify-center items-center mdp-8'>
-          {Object.keys(productDetails).length ? 
           <div className='flex flex-col md:flex-row w-full md:w-fit p-4 items-center gap-[5rem]'>
-            <img src={productDetails?.image} className='max-h-[20rem] max-w-full md:max-w-[20rem]' />
+            <img src={productDetails[0]?.image} className='max-h-[20rem] max-w-full md:max-w-[20rem]' />
             <div className='flex px-4  flex-col gap-3 overflow-hidden'>
                 <h2 className='text-lg md:text-3xl font-semibold w-full md:w-[25ch]'>
-                    {productDetails?.title}
+                    {productDetails[0]?.title}
                 </h2>
                 <p className='text-slate-400'>
-                    {productDetails?.category}
+                    {productDetails[0]?.category}
                 </p>
                 <p className='text-sky-500 text-xl font-medium'>
-                    {"$" + productDetails?.price}
+                    {"$" + productDetails[0]?.price}
                 </p>
                 <p className='md:w-[55ch] line-clamp-6'>
-                   {productDetails?.description}
+                   {productDetails[0]?.description}
                 </p>
 
                 <div className='mt-4 flex flex-col md:flex-row gap-4'>
                    <Link onClick={() => navigate(-1)} className='border md:border-2 border-slate-400 text-slate-400 hover:bg-slate-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center'>Go Back</Link>
-                   <Link className='border md:border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center'>Edit</Link>
-                   <Link className='border md:border-2 border-red-400 text-red-400 hover:bg-red-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center'>Delete</Link>
+                   <Link to={`/edit-product/${id}`} className='border md:border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center'>Edit</Link>
+                   <Link className='border md:border-2 border-red-400 text-red-400 hover:bg-red-400 hover:text-white duration-200 px-8 py-1 text-lg md:text-xl md:font-medium rounded-md text-center' onClick={() => handleDeleteProductData(id)}>Delete</Link>
                 </div>
             </div>
-          </div> : <LoadingAnimation />}
+          </div>
     </div>
   )
 }

@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { axiosInstance } from '../utils/Axios'
 import ProductsContainer from '../Components/ProductsContainer'
+import { ProductDetailsContext } from '../Context/Context'
 
 function CategoryProducts() {
 
-    const [categoryData, setcategoryData] = useState([])
+  const {category} = useParams()
 
-    const {category} = useParams()
-    const fetchCategoryProducts = () => {
-      axiosInstance.get(`/products/category/${category}`)
-      .then(data => setcategoryData(data.data))
-    }
-
-    useEffect(() => {
-      fetchCategoryProducts()
-
-      return () => {
-        setcategoryData([])
-      }
-
-    }, [category])
+    const [productsData, setProductsData] = useContext(ProductDetailsContext)
+    const categoryData = productsData.filter((el) => el.category === category)
 
   return (
       <ProductsContainer 
