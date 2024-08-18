@@ -12,7 +12,7 @@ function ProductForm({submitFormDataHandler, newProductData, handleInputData, ti
                         <input required type="number" name="price" className='w-full p-2 rounded-md bg-zinc-100' placeholder='price' value={newProductData.price} onChange={handleInputData} />
                     </div>
                     <div className='flex gap-4 md:gap-8 flex-col md:flex-row'>
-                        <input min={0} max={5} required type="number" name="rate" className='w-full p-2 rounded-md bg-zinc-100' placeholder='rate' value={newProductData.rating?.rate || ""} onChange={handleInputData} />
+                        <input min={0} max={5} step={0.01} required type="number" name="rate" className='w-full p-2 rounded-md bg-zinc-100' placeholder='rate' value={newProductData.rating?.rate || ""} onChange={handleInputData} />
                         <input required type="number" name="count" className='w-full p-2 rounded-md bg-zinc-100' placeholder='count' value={newProductData.rating?.count || ""} onChange={handleInputData} />
                     </div>
                     <textarea required name="description" className='w-full h-[12rem] bg-zinc-100 p-2' placeholder="description" value={newProductData.description} onChange={handleInputData} ></textarea>
